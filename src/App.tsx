@@ -1,40 +1,22 @@
-import { useState, useEffect } from "react";
-import "./App.css";
-import { api } from "./api";
+import { Card } from "./components/card/index";
+import logo from "./assets/logo.svg";
+
+import "./app.css";
 
 function App() {
-  const [data, setData] = useState<[]>([]);
-  const [loading, setLoading] = useState<Boolean>(false);
-
-  useEffect(() => {
-    loadJogos();
-  }, []);
-
-  const loadJogos = async () => {
-    setLoading(true);
-    let json = await api.getAllData();
-    setData(json);
-    setLoading(false);
-  };
-
   return (
-    <div className="p-5">
-      {loading && <div>Carregando...</div>}
+    <>
+      <div className="container">
+        <a href="https://www.appmasters.io/pt">
+          <img src={logo} alt="Logo app masters" />
+        </a>
 
-      {!loading && data.length > 0 && (
-        <>
-          <div>Total de data: {data.length}</div>
-
-          <div>
-            {data.map((item) => (
-              <h1 key={item.id}>{item.title}</h1>
-            ))}
-          </div>
-        </>
-      )}
-
-      {!loading && data.length === 0 && <div>Não há Posts para exibir.</div>}
-    </div>
+        <input type="text" placeholder="Pesquisar jogos..." />
+      </div>
+      <div className="container">
+        <Card />
+      </div>
+    </>
   );
 }
 

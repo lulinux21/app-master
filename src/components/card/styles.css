@@ -1,0 +1,41 @@
+.card {
+  max-width: 320px;
+  width: 100%;
+  border: 1px solid #1f2f59;
+  padding: 10px;
+  border-radius: 12px;
+  background: linear-gradient(
+      180deg,
+      #1f2f59 40%,
+      #1d42cf 30%,
+      rgb(255, 255, 255) 10%
+    )
+    center bottom / cover no-repeat;
+  margin-bottom: 12px;
+}
+
+.card img {
+  width: 100%;
+  border: 3px solid #fff;
+  border-radius: 12px;
+}
+
+.card .box-info {
+  margin-bottom: 10px;
+  border: 3px solid #fff;
+  padding: 12px;
+  min-height: 120px;
+}
+
+.card .box-info .title {
+  font-size: 16px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #1f2f59;
+}
+
+.card .description {
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+}
