@@ -3,4 +3,5 @@ export interface Jogos {
   title: string;
   short_description: string;
   thumbnail: string;
+  genre: string
 }

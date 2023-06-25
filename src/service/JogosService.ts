@@ -9,8 +9,14 @@ export const JogosService = {
       })
       let json = await response.json();
       return json;
-    } catch (error) {
-      alert("Deu erro, recarregue a página novamente!!!")
+
+    } catch (error: any) {
+      if (error.response) {
+        console.log("Lucas" + error.response.data);
+        console.log("Lucas" + error.response.status);
+        console.log("Lucas" + error.response.headers);
+      }
     }
   }
 }
+

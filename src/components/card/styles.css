@@ -39,3 +39,43 @@
   color: #333;
   font-weight: normal;
 }
+
+.loader {
+  width: 50px;
+  height: 50px;
+  margin: 25vh auto;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, #1f2f59);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: s3 1s infinite linear;
+}
+@keyframes s3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.filter {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  flex: 6;
+}
+
+.filters {
+  flex: 6;
+}
+
+.filters input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: 3px solid #1f2f59;
+  outline: none;
+}
+
+.logo img {
+  max-width: 320px;
+}
