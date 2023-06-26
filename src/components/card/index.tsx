@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 import { api } from "./../../service/Api";
 import { Jogos } from "./../../types/Jogos";
-import axios from "axios";
 
 import logo from "./../../assets/logo.svg";
 
