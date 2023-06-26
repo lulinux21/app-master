@@ -79,3 +79,52 @@
 .logo img {
   max-width: 320px;
 }
+
+/* Telefones em paisagem e abaixo */
+@media (max-width: 480px) {
+  /* estilos aqui */
+
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .filters input {
+    max-width: 480px;
+  }
+
+  .card {
+    max-width: 320px;
+    width: 100%;
+    margin: 20px auto;
+  }
+}
+
+/* Telefones em paisagem a tablet em retrato */
+@media (max-width: 767px) {
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .filters input {
+    max-width: 767px;
+    width: 100%;
+  }
+
+  .card {
+    max-width: 320px;
+    width: 100%;
+    margin: 20px auto;
+  }
+}

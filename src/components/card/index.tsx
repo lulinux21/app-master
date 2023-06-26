@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { JogosService } from "./../../service/JogosService";
+import { api } from "./../../service/Api";
 import { Jogos } from "./../../types/Jogos";
 
 import logo from "./../../assets/logo.svg";
@@ -23,11 +23,31 @@ export const Card = () => {
   }, []);
 
   const loadJogos = async () => {
-    setLoading(true);
-    let json = await JogosService.getJogosData();
-    setJogos(json);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const response = await api.get("/data", {
+        signal: AbortSignal.timeout(5000),
+        headers: { "dev-email-address": "lucasgomes@appmasters.com" },
+      });
+      setLoading(false);
+      setJogos(response.data);
+    } catch (error: any) {
+      const statusErroServidor = [500, 502, 503, 504, 506, 507, 508, 509];
+      const statusCode = error.response.status;
+      const found = statusErroServidor.includes(statusCode);
+
+      if (found) {
+        alert("O servidor falhou em responder, tente recarregar a página");
+      }
+
+      if (statusCode < 500 && statusCode >= 510) {
+        alert(
+          "O servidor não conseguirá responder por agora, tente voltar novamente mais tarde"
+        );
+      }
+    }
   };
+
   return (
     <>
       <div className="container filter">
@@ -46,9 +66,9 @@ export const Card = () => {
         </div>
       </div>
 
-      {loading ? <div className="loader"></div> : null}
+      {loading && <div className="loader"></div>}
 
-      {!loading && jogos.length > 0 ? (
+      {!loading && jogos.length > 0 && (
         <>
           {jogosFiltrados.map((jogo) => (
             <div className="card" key={jogo.id}>
@@ -62,20 +82,7 @@ export const Card = () => {
             </div>
           ))}
         </>
-      ) : null}
-
-      {!loading && jogos.length === 0 ? (
-        <div className="container filter">
-          <div className="logo">
-            <a href="https://www.appmasters.io/pt">
-              <img className="logo" src={logo} alt="Logo app masters" />
-            </a>
-          </div>
-          <div className="filters">
-            <input type="text" placeholder="Pesquise um jogo..." />
-          </div>
-        </div>
-      ) : null}
+      )}
     </>
   );
 };
