@@ -30,10 +30,10 @@ export const Card = () => {
         headers: { "dev-email-address": "lucasgomes@appmasters.com" },
       });
       setLoading(false);
-      setJogos(response.data);
+      setJogos(response?.data);
     } catch (error: any) {
       const statusErroServidor = [500, 502, 503, 504, 506, 507, 508, 509];
-      const statusCode = error.response.status;
+      const statusCode = error?.response?.status;
       const found = statusErroServidor.includes(statusCode);
 
       if (found) {
