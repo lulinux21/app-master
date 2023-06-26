@@ -47,6 +47,11 @@ export const Card = () => {
         );
         setLoading(false);
       }
+
+      if (error.response.status === "pending") {
+        alert("O servidor demorou para carregar, tente recarregar a página");
+        setLoading(false);
+      }
     }
   };
 
