@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 import { api } from "./../../service/Api";
 import { Jogos } from "./../../types/Jogos";
+import axios from "axios";
 
 import logo from "./../../assets/logo.svg";
 
@@ -48,7 +49,7 @@ export const Card = () => {
         setLoading(false);
       }
 
-      if (error.response.status === "pending") {
+      if (axios.isCancel(error)) {
         alert("O servidor demorou para carregar, tente recarregar a página");
         setLoading(false);
       }
