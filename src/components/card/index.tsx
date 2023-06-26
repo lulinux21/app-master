@@ -38,12 +38,14 @@ export const Card = () => {
 
       if (found) {
         alert("O servidor falhou em responder, tente recarregar a página");
+        setLoading(false);
       }
 
       if (statusCode < 500 && statusCode >= 510) {
         alert(
           "O servidor não conseguirá responder por agora, tente voltar novamente mais tarde"
         );
+        setLoading(false);
       }
     }
   };
@@ -82,6 +84,10 @@ export const Card = () => {
             </div>
           ))}
         </>
+      )}
+
+      {!loading && jogos.length === 0 && (
+        <h1>O servidor demorou para responder, tente mais tarde</h1>
       )}
     </>
   );
