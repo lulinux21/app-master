@@ -49,8 +49,8 @@ export const Card = () => {
         setLoading(false);
       }
 
-      if (axios.isCancel(error)) {
-        alert("O servidor demorou para carregar, tente recarregar a página");
+      if (error.response.status === "canceled") {
+        alert("O servidor demorou para responder, tente recarregar a página");
         setLoading(false);
       }
     }
